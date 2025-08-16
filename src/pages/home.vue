@@ -1,0 +1,111 @@
+<template>
+  <LogoHeader :showBoth="false" />
+
+  <h1 class="hello">Olá, Alfredo!</h1>
+
+  <div class="search-container">
+    <img @click="focusInput()" class="search-icon" src="../assets/action-icons/search.png" />
+    <input ref="inputRef" placeholder="Pesquisar" />
+    <!-- <img class="mic-icon" src="../assets/action-icons/mic.png" /> -->
+  </div>
+
+  <div class="actions-container">
+    <LongeButton v-for="action, index in actions" :variant="index % 2 == 0 ? 'primary' : 'secondary'">
+      <img :src="action.icon" />
+      <span>{{ action.text }}</span>
+    </LongeButton>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import LogoHeader from '@/components/LogoHeader.vue';
+
+import healthIcon from '../assets/action-icons/health.png'
+import wellBeingIcon from '../assets/action-icons/well-being.png'
+import activitiesIcon from '../assets/action-icons/activities.png'
+import foodIcon from '../assets/action-icons/food.png'
+import calendarIcon from '../assets/action-icons/calendar.png'
+import statusIcon from '../assets/action-icons/status.png'
+import LongeButton from '@/components/LongeButton.vue';
+
+const inputRef = ref();
+
+const actions = [
+  { icon: healthIcon, text: "Saúde" },
+  { icon: wellBeingIcon, text: "Bem-estar" },
+  { icon: activitiesIcon, text: "Atividades" },
+  { icon: foodIcon, text: "Alimentação" },
+  { icon: calendarIcon, text: "Agenda" },
+  { icon: statusIcon, text: "Status" }
+]
+
+function focusInput() {
+  inputRef.value.focus();
+}
+</script>
+
+<style lang="scss" scoped>
+.hello {
+  color: var(--color-secondary);
+  text-align: center;
+  font-size: 2em;
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+.search-container {
+  position: relative;
+
+  img {
+    position: absolute;
+    height: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.search-icon {
+      left: 8px;
+    }
+
+    &.mic-icon {
+      right: 8px;
+    }
+  }
+
+  input {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    border: solid 1px #b2b2b2;
+    border-radius: 10px;
+    font-size: 1em;
+    padding: 12px 8px 12px calc(25px + 8px + 8px);
+
+    &::placeholder {
+      color: white;
+    }
+  }
+}
+
+.actions-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 48px;
+  column-gap: 12px;
+  row-gap: 24px;
+
+  button {
+    font-size: 1rem;
+    padding: 0;
+    border-radius: 10px;
+    padding: 12px 0;
+
+    img {
+      display: block;
+      height: 50px;
+      margin: auto;
+      margin-bottom: 8px;
+    }
+  }
+}
+</style>

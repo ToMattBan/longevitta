@@ -4,11 +4,15 @@
 
     <div class="bottom-buttons">
       <button>
-        <ColoredPng :src="sosIcon" />
+        <a href="tel:190">
+          <ColoredPng :src="sosIcon" />
+        </a>
       </button>
 
       <button>
-        <ColoredPng :src="wppIcon" />
+        <a href="https://wa.me/47996728554">
+          <ColoredPng :src="wppIcon" />
+        </a>
       </button>
     </div>
   </main>

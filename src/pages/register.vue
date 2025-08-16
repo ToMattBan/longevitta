@@ -5,7 +5,7 @@
 
   <div class="option-buttons">
     <LongeButton variant="primary">
-      <img style="opacity: 0;" src="../assets/action-icons/lock.png" />
+      <img src="../assets/action-icons/lock.png" />
       <span>Idoso/Familiar</span>
     </LongeButton>
     <LongeButton variant="secondary">
@@ -22,7 +22,7 @@
     </LongeButton>
   </div>
 
-  <router-link class="login" to="/login">Já tem uma conta? Logar-se</router-link>
+  <RouterLink class="login" to="/login">Já tem uma conta? Logar-se</RouterLink>
 </template>
 
 <script setup lang="ts">

@@ -1,9 +1,18 @@
 <template>
   <section class="logo-container">
     <img class="main-logo" src="../assets/logos/small_logo.png" alt="LGV" />
-    <img src="../assets/logos/big_logo.png" alt="logo extenso" />
+    <img :class="{ 'd-none': !showBoth }" src="../assets/logos/big_logo.png" alt="logo extenso" />
   </section>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  showBoth: {
+    type: Boolean,
+    default: true
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 .logo-container {

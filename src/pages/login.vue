@@ -1,29 +1,35 @@
 <template>
   <LogoHeader />
 
-  <form @submit.prevent="">
+  <form @submit.prevent="enterApp">
     <legend>Login</legend>
 
     <div class="input-container">
       <label>Nome:</label>
-      <input />
+      <input required />
     </div>
 
     <div class="input-container">
       <label>Senha:</label>
-      <input type="password" />
+      <input type="password" required />
     </div>
 
     <LongeButton variant="secondary" type="submit">Entrar</LongeButton>
 
-    <router-link class="signup" to="/register">Não tem uma conta? Cadastre-se</router-link>
+    <RouterLink class="signup" to="/register">Não tem uma conta? Cadastre-se</RouterLink>
   </form>
 </template>
 
 <script setup lang="ts">
 import LogoHeader from '@/components/LogoHeader.vue';
 import LongeButton from '@/components/LongeButton.vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
+
+function enterApp() {
+  router.push('/home')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -33,7 +39,7 @@ form {
   margin-top: 32px;
 
   legend {
-    margin-bottom: 23px;
+    margin-bottom: 24px;
     font-weight: 700;
     font-size: 2em;
   }

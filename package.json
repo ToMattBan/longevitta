@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "build:android": "run-p build && npx cap sync && cd ./android && ./gradlew assembleDebug && rm -rf ../output && mkdir -p ../output && cp ./app/build/outputs/apk/debug/app-debug.apk ../output/longevitta.apk",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^7.4.2",
+    "@capacitor/status-bar": "^7.0.2",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.16.5",
     "@vitejs/plugin-vue": "^6.0.1",

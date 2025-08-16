@@ -1,13 +1,24 @@
 :root {
   --color-primary: #8d6ba7;
   --color-secondary: #7fb2ac;
+
+  --area-top: 32px;
 }
 
 html {
-  padding: var(--vueuse-safe-area-top) 8px var(--vueuse-safe-area-bottom) 8px;
+  padding: var(--area-top) 16px 0;
 }
 
 html, body {
   max-width: 600px;
   margin: auto;
+  font-size: 18px;
+}
+
+img {
+  max-width: 100%;
+}
+
+input {
+  box-sizing: border-box;
 }

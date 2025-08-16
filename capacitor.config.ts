@@ -4,10 +4,14 @@ const config: CapacitorConfig = {
   appId: 'com.tomatt.longevitta',
   appName: 'Longevitta',
   webDir: 'dist',
-  server: {
-    url: "http://192.168.1.26:5173/",
-    cleartext: true
-  }
+
+  plugins: {
+    StatusBar: {
+      overlaysWebView: false,
+      style: "LIGHT",
+      backgroundColor: "#ffffffff",
+    },
+  },
 };
 
 export default config;

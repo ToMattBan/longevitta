@@ -43,7 +43,7 @@ pnpm lint
 npx cap add android
 pnpm build
 npx cap sync
-npx cap build android
+*- npx cap build android -*
 npx cap run android
 
 Remember to change capacitor.config.ts to add/remove server options  to live reload

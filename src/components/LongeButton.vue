@@ -23,6 +23,7 @@ button {
   border-radius: 30px;
   border: none;
   padding: 8px 32px;
+  font-weight: 700;
 
   &.primary {
     background-color: var(--color-primary);

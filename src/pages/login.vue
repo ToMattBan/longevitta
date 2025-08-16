@@ -1,8 +1,5 @@
 <template>
-  <section class="logo-container">
-    <img class="main-logo" src="../assets/logos/small_logo.png" alt="LGV" />
-    <img src="../assets/logos/big_logo.png" alt="logo extenso" />
-  </section>
+  <LogoHeader />
 
   <form @submit.prevent="">
     <legend>Login</legend>
@@ -19,26 +16,17 @@
 
     <LongeButton variant="secondary" type="submit">Entrar</LongeButton>
 
-    <a href="/register">Não tem uma conta? Cadastre-se</a>
+    <router-link class="signup" to="/register">Não tem uma conta? Cadastre-se</router-link>
   </form>
 </template>
 
 <script setup lang="ts">
+import LogoHeader from '@/components/LogoHeader.vue';
 import LongeButton from '@/components/LongeButton.vue';
 
 </script>
 
 <style lang="scss" scoped>
-.logo-container {
-  text-align: center;
-
-  .main-logo {
-    width: 50%;
-    margin-top: 32px;
-    margin-bottom: 24px;
-  }
-}
-
 form {
   color: var(--color-primary);
   text-align: center;
@@ -75,7 +63,7 @@ form {
     margin: 48px 0;
   }
 
-  a {
+  .signup {
     display: block;
     color: var(--color-primary);
     font-size: 0.8em;

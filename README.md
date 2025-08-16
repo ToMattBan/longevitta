@@ -37,3 +37,15 @@ pnpm build
 ```sh
 pnpm lint
 ```
+
+
+### Setup
+npx cap add android
+pnpm build
+npx cap sync
+npx cap build android
+npx cap run android
+
+Remember to change capacitor.config.ts to add/remove server options  to live reload
+
+If you get an error about semantic analysis, go to gradle-wrapper.properties and change the distribuionURL to a new one (In my case here, just change the version to 9.0.0 in the end of the string)

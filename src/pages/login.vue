@@ -1,3 +1,5 @@
 <template>
-  <h1>Login</h1>
+  <section>
+    <img src="" alt="icon here" />
+  </section>
 </template>

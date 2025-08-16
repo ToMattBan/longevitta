@@ -1,5 +1,13 @@
+:root {
+  --color-primary: #8d6ba7;
+  --color-secondary: #7fb2ac;
+}
+
+html {
+  padding: var(--vueuse-safe-area-top) 8px var(--vueuse-safe-area-bottom) 8px;
+}
+
 html, body {
   max-width: 600px;
   margin: auto;
-  padding: 8px;
 }

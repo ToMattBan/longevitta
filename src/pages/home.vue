@@ -11,8 +11,10 @@
 
   <div class="actions-container">
     <LongeButton v-for="action, index in actions" :variant="index % 2 == 0 ? 'primary' : 'secondary'">
-      <img :src="action.icon" />
-      <span>{{ action.text }}</span>
+      <RouterLink :to="action.to">
+        <img :src="action.icon" />
+        <span>{{ action.text }}</span>
+      </RouterLink>
     </LongeButton>
   </div>
 </template>
@@ -32,12 +34,12 @@ import LongeButton from '@/components/LongeButton.vue';
 const inputRef = ref();
 
 const actions = [
-  { icon: healthIcon, text: "Saúde" },
-  { icon: wellBeingIcon, text: "Bem-estar" },
-  { icon: activitiesIcon, text: "Atividades" },
-  { icon: foodIcon, text: "Alimentação" },
-  { icon: calendarIcon, text: "Agenda" },
-  { icon: statusIcon, text: "Status" }
+  { icon: healthIcon, text: "Saúde", to: "/options/health" },
+  { icon: wellBeingIcon, text: "Bem-estar", to: "/options/wellBeing" },
+  { icon: activitiesIcon, text: "Atividades", to: "/options/activities" },
+  { icon: foodIcon, text: "Alimentação", to: "/options/food" },
+  { icon: calendarIcon, text: "Agenda", to: "/options/calendar" },
+  { icon: statusIcon, text: "Status", to: "/options/status/" }
 ]
 
 function focusInput() {
@@ -99,6 +101,11 @@ function focusInput() {
     padding: 0;
     border-radius: 10px;
     padding: 12px 0;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
 
     img {
       display: block;

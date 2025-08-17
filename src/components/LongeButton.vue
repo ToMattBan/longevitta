@@ -24,6 +24,7 @@ button {
   border: none;
   padding: 8px 32px;
   font-weight: 700;
+  cursor: pointer;
 
   &.primary {
     background-color: var(--color-primary);

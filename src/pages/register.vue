@@ -26,8 +26,14 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+import { setStatusBarLight } from '@/utils/statusBar';
 import LogoHeader from '@/components/LogoHeader.vue';
 import LongeButton from '@/components/LongeButton.vue';
+
+onMounted(async () => {
+  await setStatusBarLight();
+})
 </script>
 
 <style lang="scss" scoped>

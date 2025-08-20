@@ -20,7 +20,7 @@ const maskStyle = computed(() => (`url('${props.src}')`));
 <style lang="scss" scoped>
 .masked {
   display: inline-block;
-  background-color: var(--color-primary);
+  background-color: var(--button-color);
 
   mask: v-bind(maskStyle) center/95% no-repeat;
   -webkit-mask: v-bind(maskStyle) center/95% no-repeat;

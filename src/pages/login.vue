@@ -28,10 +28,15 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { setStatusBarLight } from '@/utils/statusBar';
 
 import LogoHeader from '@/components/LogoHeader.vue';
 import LongeButton from '@/components/LongeButton.vue';
+
+onMounted(async () => {
+  await setStatusBarLight();
+})
 
 const router = useRouter()
 
@@ -44,8 +49,8 @@ const showErrorPass = ref<boolean>(false)
 function enterApp() {
   let canLogin = true;
 
-  if (name.value !== 'Alfredo') { showErrorName.value = true; canLogin = false }
-  if (pass.value !== '1234') { showErrorPass.value = true; canLogin = false }
+  if (name.value.trim() !== 'Alfredo') { showErrorName.value = true; canLogin = false }
+  if (pass.value.trim() !== '1234') { showErrorPass.value = true; canLogin = false }
 
   if (canLogin) router.push('/home');
 }

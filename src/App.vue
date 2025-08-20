@@ -1,6 +1,8 @@
 <template>
   <main>
-    <RouterView />
+    <div class="view">
+      <RouterView />
+    </div>
 
     <div class="bottom-buttons">
       <button>
@@ -34,21 +36,29 @@ onMounted(async () => {
 <style lang="scss" scoped>
 main {
   position: relative;
-  min-height: calc(100vh - var(--area-top));
+  height: calc(100vh - var(--area-top));
+  overflow: scroll;
+
+  --bottom-icons-size: 55px;
+
+  .view {
+    margin-bottom: calc(var(--bottom-icons-size) + 8px);
+  }
 
   .bottom-buttons {
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    padding-bottom: 8px;
+    background-color: var(--background-color);
+    width: calc(100% - (var(--area-sides) * 2));
 
     button {
+      background-color: var(--background-color);
       padding: 0;
-      background-color: transparent;
       border: none;
-      width: 55px;
+      width: var(--bottom-icons-size);
     }
   }
 }

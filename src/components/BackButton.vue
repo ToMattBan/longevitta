@@ -23,8 +23,9 @@ button {
   background: transparent;
   padding: 0;
 
-  position: absolute;
+  position: fixed;
+  top: var(--area-top);
   width: 50px;
-  left: 0;
+  left: var(--area-sides);
 }
 </style>

@@ -3,7 +3,8 @@
   <LogoHeader :showBoth="false" />
 
   <div class="options-container">
-    <LongeButton v-for="option, index in optionsToShow" :variant="index % 2 == 0 ? 'primary' : 'secondary'">
+    <LongeButton v-for="option, index in optionsToShow" :variant="index % 2 == 0 ? 'primary' : 'secondary'"
+      @click="checkGoSomewhere(option)">
       <img :class="{ 'op-0': optionsExistent.includes(option) }" src="../assets/action-icons/lock.png" />
       <span>{{ option }}</span>
     </LongeButton>
@@ -11,7 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { setStatusBarLight } from '@/utils/statusBar';
+
 import BackButton from '@/components/BackButton.vue';
 import LogoHeader from '@/components/LogoHeader.vue';
 import LongeButton from '@/components/LongeButton.vue';
@@ -25,7 +29,12 @@ interface IOptions {
   status: string[],
 }
 
+onMounted(async () => {
+  await setStatusBarLight();
+})
+
 const route = useRoute();
+const router = useRouter();
 
 const allOptions: IOptions = {
   health: [
@@ -52,6 +61,10 @@ const params = route.params.type as keyof IOptions;
 const optionsToShow = allOptions[params];
 
 const optionsExistent: string[] = ['Perfil', 'Agendamento de Profissionais']
+
+function checkGoSomewhere(option: string) {
+  if (option === 'Perfil') router.push('/profile');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -67,6 +80,7 @@ const optionsExistent: string[] = ['Perfil', 'Agendamento de Profissionais']
     padding-bottom: 12px;
     text-align: left;
     height: 5rem;
+    font-size: 1.5rem;
 
     display: flex;
     flex-direction: row;

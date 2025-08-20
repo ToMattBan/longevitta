@@ -2,11 +2,16 @@
   --color-primary: #8d6ba7;
   --color-secondary: #7fb2ac;
 
+  --button-color: var(--color-primary);
+
+  --background-color: #ffffff;
+
   --area-top: 32px;
+  --area-sides: 16px;
 }
 
 html {
-  padding: var(--area-top) 16px 0;
+  padding: var(--area-top) var(--area-sides) 0;
 }
 
 html, body {
@@ -23,6 +28,15 @@ input {
   box-sizing: border-box;
 }
 
+
+/* THEMED STYLE */
+html, body {
+  &:has(.themed) {
+    --button-color: white;
+    --background-color: var(--color-secondary);
+    background-color: var(--background-color);
+  }
+}
 
 /* UTILS */
 .d-none {

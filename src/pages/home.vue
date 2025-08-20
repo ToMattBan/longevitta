@@ -20,7 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { setStatusBarLight } from '@/utils/statusBar';
 import LogoHeader from '@/components/LogoHeader.vue';
 
 import healthIcon from '../assets/action-icons/health.png'
@@ -30,6 +31,10 @@ import foodIcon from '../assets/action-icons/food.png'
 import calendarIcon from '../assets/action-icons/calendar.png'
 import statusIcon from '../assets/action-icons/status.png'
 import LongeButton from '@/components/LongeButton.vue';
+
+onMounted(async () => {
+  await setStatusBarLight();
+})
 
 const inputRef = ref();
 

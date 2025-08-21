@@ -43,6 +43,7 @@ main {
 
   .view {
     margin-bottom: calc(var(--bottom-icons-size) + 8px);
+    padding-bottom: 24px;
   }
 
   .bottom-buttons {

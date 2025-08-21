@@ -8,7 +8,7 @@
 
       <div class="calendar-month">
         <span class="profissional-name">Maria</span>
-        <div class="current-month">Agosto 2025</div>
+        <div class="current-month">{{ monthUsing }} 2025</div>
       </div>
 
       <table cellspacing="0">
@@ -33,6 +33,9 @@
         </tbody>
       </table>
     </div>
+
+    <button @click="changeMonth('less')">MENOS Mês</button>
+    <button @click="changeMonth('plus')">MAIS Mês</button>
   </div>
 </template>
 
@@ -44,8 +47,8 @@ onMounted(() => {
   createCalendar();
 })
 
-const monthUsing = (new Date()).getMonth();
-const yearUsing = (new Date()).getFullYear();
+let monthUsing = (new Date()).getMonth();
+let yearUsing = (new Date()).getFullYear();
 const weeks = ref<(number | undefined)[][]>([]);
 
 function createCalendar() {
@@ -81,6 +84,28 @@ function isBusy(day: undefined | number) {
   if (day === undefined) return false
 
   return Math.random() * day > day / 2;
+}
+
+function changeMonth(direction: 'plus' | 'less') {
+  if (direction === 'plus') {
+    if (monthUsing === 12) {
+      monthUsing = 1;
+      yearUsing = yearUsing + 1
+    } else {
+      monthUsing = monthUsing + 1
+    }
+  }
+
+  if (direction === 'less') {
+    if (monthUsing === 1) {
+      monthUsing = 12;
+      yearUsing = yearUsing - 1;
+    } else {
+      monthUsing = monthUsing - 1;
+    }
+  }
+
+  createCalendar();
 }
 </script>
 

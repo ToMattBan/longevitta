@@ -5,7 +5,6 @@
     <div class="calendar-title">Agenda</div>
 
     <div class="calendar-table">
-
       <div class="calendar-month">
         <span class="profissional-name">Maria</span>
 
@@ -37,12 +36,68 @@
 
         <tbody>
           <tr v-for="week in weeks">
-            <td v-for="day in week" :class="{ 'busy': isBusy(day) }">
+            <td v-for="day in week" :class="{ 'busy': isBusy(day) }" @click="openSchedule">
               <div>{{ day }}</div>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <div :class="['schedule-agenda', { 'open': isScheduleOpen }]">
+        <span>{{ chosedDay }}/{{ (monthUsing + 1).toString().padStart(2, '0') }}/{{ yearUsing }}</span>
+
+        <div class="schedule-title">Escolha o horário desejado:</div>
+
+        <div class="schedule-time">
+          <div>
+            <select>
+              <option>07:00</option>
+              <option>08:00</option>
+              <option>09:00</option>
+              <option>10:00</option>
+              <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+            </select>
+          </div>
+
+          <div>
+            <select>
+              <option>07:00</option>
+              <option>08:00</option>
+              <option>09:00</option>
+              <option>10:00</option>
+              <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+            </select>
+          </div>
+        </div>
+
+        <figure>
+          <figcaption>Horários não disponíveis:</figcaption>
+          <ul>
+            <li>04:00 - 06:00</li>
+            <li>20:00 - 23:00</li>
+          </ul>
+        </figure>
+
+        <div class="schedule-button" @click="closeSchedule">
+          <LongeButton variant="secondary">CONFIRMAR</LongeButton>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -50,11 +105,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import BackButton from '@/components/BackButton.vue';
+import LongeButton from '@/components/LongeButton.vue';
 
 onMounted(() => {
   createCalendar();
 })
 
+const isScheduleOpen = ref<boolean>(false);
+
+const chosedDay = ref<string>('00');
 let monthUsing = (new Date()).getMonth();
 let yearUsing = (new Date()).getFullYear();
 const weeks = ref<(number | undefined)[][]>([]);
@@ -92,6 +151,27 @@ function isBusy(day: undefined | number) {
   if (day === undefined) return false
 
   return Math.random() * day > day / 2;
+}
+
+function openSchedule(e: MouseEvent) {
+  let target = e.target as HTMLElement;
+
+  if (!target) return;
+
+  while (target.tagName != "TD") {
+    target = target.parentElement as HTMLElement;
+  }
+
+  if (!target.classList.contains('busy')) {
+    chosedDay.value = target.outerText.padStart(2, '0');
+    isScheduleOpen.value = true;
+  } else {
+    alert('Dia não disponível')
+  }
+}
+
+function closeSchedule() {
+  isScheduleOpen.value = false;
 }
 
 function changeMonth(direction: 'plus' | 'less') {
@@ -160,6 +240,7 @@ function getMonthName(number: number) {
 
   .calendar-table {
     --border-table: solid 2px white;
+    position: relative;
 
     .calendar-month {
       font-weight: 700;
@@ -244,6 +325,72 @@ function getMonthName(number: number) {
           justify-content: center;
           font-size: 1.5rem;
         }
+      }
+    }
+
+    .schedule-agenda {
+      position: absolute;
+      background-color: #4a656d;
+      width: 100%;
+      min-height: 100%;
+      top: 28px;
+      display: none;
+      font-weight: 300;
+
+      &.open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      span {
+        margin-top: 24px;
+        margin-bottom: 32px;
+      }
+
+      .schedule-title {
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .schedule-time {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+
+        div {
+          background-color: white;
+          border-radius: 20px;
+          padding: 8px 12px;
+          padding-right: 8px;
+
+          select {
+            background-color: transparent;
+            border: none;
+            color: #4a656d;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0;
+            padding-right: 4px;
+          }
+        }
+
+      }
+
+      figure {
+        margin-top: auto;
+
+        ul {
+          padding: 0;
+
+          li {
+            list-style: none;
+          }
+        }
+      }
+
+      .schedule-button {
+        margin-bottom: 24px;
       }
     }
   }

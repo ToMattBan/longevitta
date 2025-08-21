@@ -8,7 +8,18 @@
 
       <div class="calendar-month">
         <span class="profissional-name">Maria</span>
-        <div class="current-month">{{ monthUsing }} 2025</div>
+
+        <div class="month-container">
+          <button @click="changeMonth('less')" class="month-button">
+            <img src="../../assets/action-icons/back.png">
+          </button>
+
+          <div class="current-month">{{ getMonthName(monthUsing) }} {{ yearUsing }}</div>
+
+          <button @click="changeMonth('plus')" class="month-button">
+            <img src="../../assets/action-icons/back.png">
+          </button>
+        </div>
       </div>
 
       <table cellspacing="0">
@@ -33,9 +44,6 @@
         </tbody>
       </table>
     </div>
-
-    <button @click="changeMonth('less')">MENOS Mês</button>
-    <button @click="changeMonth('plus')">MAIS Mês</button>
   </div>
 </template>
 
@@ -88,8 +96,8 @@ function isBusy(day: undefined | number) {
 
 function changeMonth(direction: 'plus' | 'less') {
   if (direction === 'plus') {
-    if (monthUsing === 12) {
-      monthUsing = 1;
+    if (monthUsing === 11) {
+      monthUsing = 0;
       yearUsing = yearUsing + 1
     } else {
       monthUsing = monthUsing + 1
@@ -97,8 +105,8 @@ function changeMonth(direction: 'plus' | 'less') {
   }
 
   if (direction === 'less') {
-    if (monthUsing === 1) {
-      monthUsing = 12;
+    if (monthUsing === 0) {
+      monthUsing = 11;
       yearUsing = yearUsing - 1;
     } else {
       monthUsing = monthUsing - 1;
@@ -106,6 +114,35 @@ function changeMonth(direction: 'plus' | 'less') {
   }
 
   createCalendar();
+}
+
+function getMonthName(number: number) {
+  switch (number) {
+    case 0:
+      return "Janeiro"
+    case 1:
+      return "Fevereiro"
+    case 2:
+      return "Março"
+    case 3:
+      return "Abril"
+    case 4:
+      return "Maio"
+    case 5:
+      return "Junho"
+    case 6:
+      return "Julho"
+    case 7:
+      return "Agosto"
+    case 8:
+      return "Setembro"
+    case 9:
+      return "Outubro"
+    case 10:
+      return "Novembro"
+    case 11:
+      return "Dezembro"
+  }
 }
 </script>
 
@@ -135,13 +172,45 @@ function changeMonth(direction: 'plus' | 'less') {
         padding: 8px;
       }
 
-      .current-month {
-        background-color: var(--color-primary);
-        border: var(--border-table);
-        border-bottom: none;
-        padding: 8px;
-        font-size: 2rem;
-        text-transform: uppercase;
+      .month-container {
+        position: relative;
+
+        .current-month {
+          background-color: var(--color-primary);
+          border: var(--border-table);
+          border-bottom: none;
+          padding: 8px;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+        }
+
+        .month-button {
+          background-color: transparent;
+          border: none;
+          display: grid;
+          height: 100%;
+          aspect-ratio: 1/1;
+          padding: 0;
+          position: absolute;
+          left: 8px;
+          top: 0;
+
+          &:last-child {
+            left: unset;
+            right: 8px;
+
+            img {
+              rotate: 180deg;
+              margin-left: auto;
+            }
+          }
+
+          img {
+            height: calc(100% - 8px);
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+        }
       }
     }
 

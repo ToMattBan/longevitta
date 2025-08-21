@@ -15,7 +15,9 @@
     </div>
 
     <div class="hire-button">
-      <LongeButton variant="primary">CONTRATAR</LongeButton>
+      <RouterLink to="/profissional/calendar">
+        <LongeButton variant="primary">CONTRATAR</LongeButton>
+      </RouterLink>
     </div>
   </div>
 </template>

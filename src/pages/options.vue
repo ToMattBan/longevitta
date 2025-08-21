@@ -64,6 +64,7 @@ const optionsExistent: string[] = ['Perfil', 'Agendamento de Profissionais']
 
 function checkGoSomewhere(option: string) {
   if (option === 'Perfil') router.push('/profile');
+  if (option === 'Agendamento de Profissionais') router.push('/profissional')
 }
 </script>
 

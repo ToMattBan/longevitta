@@ -11,6 +11,8 @@
         </a>
       </button>
 
+      <img class="center-image" :src="whiteLogo" />
+
       <button>
         <a href="https://wa.me/47996728554">
           <ColoredPng :src="wppIcon" />
@@ -23,10 +25,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { StatusBar } from '@capacitor/status-bar';
-
 import ColoredPng from './components/ColoredPng.vue';
+
 import sosIcon from './assets/action-icons/sos.png';
 import wppIcon from './assets/action-icons/whatsapp.png'
+import whiteLogo from './assets/logos/white_logo.png'
 
 onMounted(async () => {
   await StatusBar.show();
@@ -51,7 +54,7 @@ main {
     justify-content: space-between;
     position: fixed;
     bottom: 0px;
-    padding-bottom: 8px;
+    padding: 8px 0;
     background-color: var(--background-color);
     width: calc(100% - (var(--area-sides) * 2));
 
@@ -60,6 +63,12 @@ main {
       padding: 0;
       border: none;
       width: var(--bottom-icons-size);
+    }
+
+    img.center-image {
+      width: calc(100% - 110px - 64px);
+      height: fit-content;
+      margin-top: auto;
     }
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <main>
+    <HeaderNavigation />
+
     <div class="view">
-      <RouterView />
+      <RouterView :key="$route.params[$route.meta.watchParams as string] as string" />
     </div>
 
     <div class="bottom-buttons">
@@ -25,6 +27,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { StatusBar } from '@capacitor/status-bar';
+import HeaderNavigation from './components/HeaderNavigation.vue';
 import ColoredPng from './components/ColoredPng.vue';
 
 import sosIcon from './assets/action-icons/sos.png';

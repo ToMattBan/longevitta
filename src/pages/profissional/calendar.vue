@@ -1,7 +1,5 @@
 <template>
   <div class="themed">
-    <BackButton />
-
     <div class="calendar-title">Agenda</div>
 
     <div class="calendar-table">
@@ -104,7 +102,6 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import BackButton from '@/components/BackButton.vue';
 import LongeButton from '@/components/LongeButton.vue';
 
 onMounted(() => {

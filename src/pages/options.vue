@@ -1,5 +1,4 @@
 <template>
-  <BackButton />
   <LogoHeader :showBoth="false" />
 
   <div class="options-container">
@@ -16,7 +15,6 @@ import { onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { setStatusBarLight } from '@/utils/statusBar';
 
-import BackButton from '@/components/BackButton.vue';
 import LogoHeader from '@/components/LogoHeader.vue';
 import LongeButton from '@/components/LongeButton.vue';
 

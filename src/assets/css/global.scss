@@ -28,6 +28,9 @@ input {
   box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+}
 
 /* THEMED STYLE */
 html, body {
@@ -40,7 +43,7 @@ html, body {
 
 /* UTILS */
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .op-0 {

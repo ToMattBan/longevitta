@@ -1,7 +1,5 @@
 <template>
   <div class="themed">
-    <BackButton />
-
     <div class="basic-infos">
       <div class="title">Perfil</div>
       <div class="selfie">
@@ -61,7 +59,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { setStatusBarDark } from '@/utils/statusBar';
-import BackButton from '@/components/BackButton.vue';
 import LongeButton from '@/components/LongeButton.vue';
 import ColoredPng from '@/components/ColoredPng.vue';
 

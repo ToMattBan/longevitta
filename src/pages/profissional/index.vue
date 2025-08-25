@@ -1,7 +1,5 @@
 <template>
   <div class="themed">
-    <BackButton />
-
     <div class="profissional-photo">
       <img src="../../assets/photos/maria.jpg" />
     </div>
@@ -23,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import BackButton from '@/components/BackButton.vue';
 import LongeButton from '@/components/LongeButton.vue';
 </script>
 

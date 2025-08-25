@@ -14,7 +14,11 @@ const router = createRouter({
     { path: "/", component: login, alias: '/login' },
     { path: '/register', component: register },
     { path: '/home', component: home },
-    { path: '/options/:type', component: options },
+    {
+      path: '/options/:type', component: options, meta: {
+        watchParams: 'type'
+      }
+    },
     { path: '/profile', component: profile },
     { path: '/profissional', component: profissional },
     { path: '/profissional/calendar', component: calendar }
